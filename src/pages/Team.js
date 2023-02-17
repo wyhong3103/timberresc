@@ -1,3 +1,4 @@
+import '../styles/Team.css';
 import { Nav } from "../components/Nav"
 // Meet The Team Page
 

@@ -1,3 +1,4 @@
+import '../styles/Home.css';
 import { Nav } from "../components/Nav"
 // Home Page 
 // Introduce TimberResc
