@@ -10,8 +10,8 @@ export const Nav = () => {
     const toHome = () => {
         navigate("/");
     };
-    const toForest = () => {
-        navigate("/forest");
+    const toDashboard = () => {
+        navigate("/dashboard");
     };
     const toTeam = () => {
         navigate("/team");
@@ -30,8 +30,8 @@ export const Nav = () => {
                     <li onClick={toHome}>
                         Home
                     </li>
-                    <li onClick={toForest}>
-                        Forest
+                    <li onClick={toDashboard}>
+                        Dashboard
                     </li>
                     <li onClick={toTeam}>
                         Meet The Team

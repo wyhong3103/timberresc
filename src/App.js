@@ -2,7 +2,7 @@ import './styles/App.css';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import { AccountContext } from './context/AcountContext';
 import { Home } from './pages/Home';
-import { Forest } from './pages/Forest';
+import { Dashboard } from './pages/Dashboard';
 import { Team } from './pages/Team';
 import { Login } from './pages/Login';
 import { useState } from 'react';
@@ -30,8 +30,8 @@ export const App = () => {
                         element={<Home/>}
                     />
                     <Route
-                        path="/forest"
-                        element={<Forest/>}
+                        path="/dashboard"
+                        element={<Dashboard/>}
                     />
                     <Route
                         path="/team"

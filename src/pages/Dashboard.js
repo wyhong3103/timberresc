@@ -1,4 +1,4 @@
-import '../styles/Forest.css';
+import '../styles/Dashboard.css';
 import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import { AccountContext } from "../context/AcountContext";
@@ -9,7 +9,7 @@ import { Nav } from "../components/Nav";
 // Display all Tree (Forest) in the watchlist 
 // Display the specific forest when clicked
 
-export const Forest = () => {
+export const Dashboard = () => {
     
     const loggedIn = useContext(AccountContext).loggedIn;
 
