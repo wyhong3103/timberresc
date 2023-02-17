@@ -16,7 +16,7 @@ export const Dashboard = () => {
     return(
         loggedIn ?
 
-        <div className="forest-page">
+        <div className="dashboard-page">
             <Nav/>
 
         </div>
