@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import { AccountContext } from "../context/AcountContext";
+import { Nav } from "../components/Nav";
 
 // Forest Page
 // Display average data for each forest
@@ -15,6 +16,7 @@ export const Forest = () => {
         loggedIn ?
 
         <div className="forest-page">
+            <Nav/>
 
         </div>
 

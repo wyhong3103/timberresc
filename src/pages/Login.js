@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import { AccountContext } from "../context/AcountContext";
+import { Nav } from "../components/Nav";
 // Login Page
 
 export const Login = ({setLoggedIn, setUsername, setPfp}) => {
@@ -14,6 +15,7 @@ export const Login = ({setLoggedIn, setUsername, setPfp}) => {
         :
 
         <div className="login-page">
+            <Nav/>
 
         </div>
 
