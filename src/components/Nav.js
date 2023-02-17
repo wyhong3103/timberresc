@@ -22,6 +22,9 @@ export const Nav = () => {
 
     return(
         <nav>
+            <h1 className='nav-title'>
+                TimberResc
+            </h1>
             <ul className="nav-links">
                 <li onClick={toHome}>
                     Home
