@@ -2,6 +2,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import { AccountContext } from './context/AcountContext';
 import { Home } from './pages/Home';
 import { Forest } from './pages/Forest';
+import { Team } from './pages/Team';
 import { Login } from './pages/Login';
 import { useState } from 'react';
 
@@ -30,6 +31,10 @@ export const App = () => {
                     <Route
                         path="/forest"
                         element={<Forest/>}
+                    />
+                    <Route
+                        path="/team"
+                        element={<Team/>}
                     />
                     <Route
                         path="/login"
