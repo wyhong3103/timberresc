@@ -4,7 +4,7 @@
     flex-direction: column;
 }
 
-.team-page-main-container{
+.team-main-container{
     flex-grow: 1;
     height : 100%;
     padding : 2rem 15rem 2rem 15rem;
@@ -13,7 +13,7 @@
     align-items: center;
 }
 
-.team-page-main-container h3{
+.team-main-container h3{
     font-family: var(--title-font);
     font-size: 5rem;
 }

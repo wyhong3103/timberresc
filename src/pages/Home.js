@@ -7,7 +7,7 @@ export const Home = () => {
     return(
         <div className="home-page">
             <Nav/>
-            <div className="home-page-main-container">
+            <div className="home-main-container">
                 <h3>
                     Under Construction
                 </h3>
