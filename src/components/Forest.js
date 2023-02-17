@@ -1,3 +1,5 @@
+import '../styles/Forest.css';
+
 export const Forest = () => {
     const dummy = [
         {
