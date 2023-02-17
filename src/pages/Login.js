@@ -13,7 +13,7 @@ export const Login = ({setLoggedIn, setUsername, setPfp}) => {
 
         :
 
-        <div>
+        <div className="login-page">
 
         </div>
 

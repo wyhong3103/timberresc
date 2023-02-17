@@ -14,7 +14,7 @@ export const Forest = () => {
     return(
         loggedIn ?
 
-        <div>
+        <div className="forest-page">
 
         </div>
 
