@@ -1,11 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Poppins:ital,wght@0,200;0,400;0,600;1,300&display=swap');
+
 /*
 
     General Style
 
 */
 
+
 *{
     padding : 0;
     margin: 0;
     box-sizing: border-box;
+}
+
+html{
+    --title-font :'Archivo Black', sans-serif;
+    --normal-font : 'Poppins', sans-serif;
+    font-size: 10px;
+    --gray1 : #171717;
+    --gray2 : #3f3f46;
+    --red : #f03800;
+    --yellow : #ffda2d;
+    --blue : #4175df;
+    --green : #59c36a;
 }

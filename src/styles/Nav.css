@@ -1,0 +1,89 @@
+nav{
+    padding : 2rem 15rem 2rem 15rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-title{
+    font-size: 4rem;
+    font-family: var(--title-font);
+    user-select: none;
+}
+
+.title-R{
+    color : var(--red);
+}
+
+.title-e{
+    color : var(--yellow);
+}
+
+.title-s{
+    color : var(--green);
+}
+
+.title-c{
+    color : var(--blue);
+}
+
+.nav-right{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap : 5rem;
+}
+
+.nav-links{
+    display: flex;
+    flex-direction: row;
+    gap : 3rem;
+    list-style: none;
+}
+
+.nav-links li{
+    position: relative;
+    font-family: var(--normal-font);
+    font-size: 1.7rem;
+}
+
+.nav-links li:hover{
+    cursor: pointer;
+}
+
+.nav-links li::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--gray1);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.nav-links li:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+
+.nav-login-btn{
+    font-family: var(--normal-font);
+    border : none;
+    background-color: var(--gray2);
+    font-size: 1.7rem;
+    padding : 1rem;
+    color : white;
+    border-radius: 1rem;
+    transition: all 0.3s;
+}
+
+.nav-login-btn:hover{
+    cursor: pointer;
+    background-color: var(--gray1);
+}

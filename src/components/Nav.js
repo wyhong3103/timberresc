@@ -22,37 +22,39 @@ export const Nav = () => {
 
     return(
         <nav>
-            <h1 className='nav-title'>
-                TimberResc
+            <h1 className='nav-title nav-left'>
+                Timber<span className='title-R'>R</span><spane className='title-e'>e</spane><span className='title-s'>s</span><span className='title-c'>c</span>
             </h1>
-            <ul className="nav-links">
-                <li onClick={toHome}>
-                    Home
-                </li>
-                <li onClick={toForest}>
-                    Forest
-                </li>
-                <li onClick={toTeam}>
-                    Meet The Team
-                </li>
-            </ul>
-            {
-                !context.loggedIn 
-                ?
-                <button className="nav-login-btn" onClick={toLogIn}>
-                    Log In
-                </button>
-                :
-                <div className="nav-user">
-                    <div className="nav-user-profile">
-                        <img src={context.pfp} alt="user-pfp"/>
-                        <p>{context.username}</p>
-                    </div>
-                    <button className="nav-logout-btn">
-                        Log Out
+            <div className="nav-right">
+                <ul className="nav-links">
+                    <li onClick={toHome}>
+                        Home
+                    </li>
+                    <li onClick={toForest}>
+                        Forest
+                    </li>
+                    <li onClick={toTeam}>
+                        Meet The Team
+                    </li>
+                </ul>
+                {
+                    !context.loggedIn
+                    ?
+                    <button className="nav-login-btn" onClick={toLogIn}>
+                        Log In
                     </button>
-                </div>
-            }
+                    :
+                    <div className="nav-user">
+                        <div className="nav-user-profile">
+                            <img src={context.pfp} alt="user-pfp"/>
+                            <p>{context.username}</p>
+                        </div>
+                        <button className="nav-logout-btn">
+                            Log Out
+                        </button>
+                    </div>
+                }
+            </div>
         </nav>
     )
 };
