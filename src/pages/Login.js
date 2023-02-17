@@ -26,11 +26,8 @@ export const Login = ({setLoggedIn, setUsername, setPfp}) => {
             <Nav/>
             <div className="login-main-container">
                 <h2>
-                    Log In To TimberResc to Start Exploring
+                    Log In To TimberResc to Start Your Journey.
                 </h2>
-                <h3>
-                    Log In Options : 
-                </h3>
                 <button className="login-google-btn" onClick={logIn}>
                     <div className="login-google-container">
                         <img src={require('../assets/google.png')} alt="google-logo"/>
