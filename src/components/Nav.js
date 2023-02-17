@@ -37,7 +37,7 @@ export const Nav = () => {
                 </li>
             </ul>
             {
-                context.loggedIn 
+                !context.loggedIn 
                 ?
                 <button className="nav-login-btn" onClick={toLogIn}>
                     Log In
