@@ -14,8 +14,9 @@ import { Nav } from "../components/Nav";
 export const Dashboard = () => {
     
     const loggedIn = useContext(AccountContext).loggedIn;
-    // 0 = Show forest, > 1, show a specific i-th tree
+    // 0 = Show forest, 1 = show tree
     const [component, setComponent] = useState(0);
+    const [treeID, setTreeID] = useState("");
 
     return(
         loggedIn ?
@@ -25,9 +26,9 @@ export const Dashboard = () => {
             <div className='dashboard-main-container'>
                 {
                     component === 0 ?
-                    <Forest/>
+                    <Forest setComponent={setComponent} setTree={setTreeID}/>
                     :
-                    <Tree/>
+                    <Tree treeID={treeID}/>
                 }
             </div>
         </div>

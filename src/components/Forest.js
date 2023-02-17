@@ -1,6 +1,6 @@
 import '../styles/Forest.css';
 
-export const Forest = () => {
+export const Forest = ({setComponent, setTree}) => {
     const dummy = [
         {
             "forestName" : "Forest 1",
@@ -9,7 +9,8 @@ export const Forest = () => {
                 93.3,
                 26.3,
                 "Not Raining"
-            ]
+            ],
+            "forestID" : 1
         },
         {
             "forestName" : "Forest 2",
@@ -18,7 +19,8 @@ export const Forest = () => {
                 89.0,
                 28.7,
                 "Raining"
-            ]
+            ],
+            "forestID" : 2
         },
         {
             "forestName" : "Forest 3",
@@ -27,9 +29,15 @@ export const Forest = () => {
                 85.2,
                 30.1,
                 "Not Raining"
-            ]
+            ],
+            "forestID" : 3
         },
     ]
+
+    const monitorTree = (forestID) => {
+        setComponent(1);
+        setTree(forestID);
+    }
 
 
     return(
@@ -54,7 +62,7 @@ export const Forest = () => {
 
                     dummy.map(item => {
                         return(
-                            <div className="forest-card">
+                            <div className="forest-card" onClick={() => monitorTree(item.forestID)}>
                                 <h3 className='forest-card-name'>{item.forestName}</h3>
                                 <div className="forest-card-temp">
                                     <p className='forest-card-prop-title'>Temperature</p>
