@@ -8,4 +8,5 @@
     flex-grow: 1;
     height : 100%;
     padding : 2rem 15rem 2rem 15rem;
+    display: flex;
 }

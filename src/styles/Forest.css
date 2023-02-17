@@ -1,0 +1,123 @@
+.forest-comp{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap : 4rem;
+}
+
+.forest-top{
+    width : 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.add-to-watchlist-btn{
+    font-family: var(--normal-font);
+    padding : 1rem;
+    border-radius: 1rem;
+    border: none;
+    font-size: 1.5rem;
+    color : white;
+    background-color: var(--gray2);
+    transition: all 0.3s;
+}
+
+.add-to-watchlist-btn:hover{
+    cursor: pointer;
+    background-color: var(--gray1);
+}
+
+.forest-top h1{
+    font-family: var(--normal-font);
+    font-weight: 800;
+    font-size: 3.5rem;
+    color : var(--gray2);
+}
+
+.forest-card-container{
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap : 2.7rem;
+    color : var(--gray2);
+}
+
+.forest-empty{
+    height : 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-family: var(--normal-font);
+}
+
+.forest-card{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    font-family: var(--normal-font);
+    padding : 2rem;
+    border-radius: 1rem;
+    transition: all 0.3s;
+    max-width: 60rem;
+    max-height: 30rem;
+}
+
+.forest-card:hover{
+    cursor: pointer;
+    background-color: #e0e0e0;
+}
+
+.forest-card-name{
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+    text-align: center;
+    font-weight: 600;
+    font-size: 3rem;
+}
+
+.forest-card-temp{
+    grid-column: 1 / 2;
+    grid-row : 2 / 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.forest-card-humid{
+    grid-column: 2 / 3;
+    grid-row : 2 / 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.forest-card-heat{
+    grid-column: 3 / 4;
+    grid-row : 2 / 4;
+    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.forest-card-rain{
+    grid-column: 1 / -1;
+    grid-row: 4 / -1;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.forest-card-prop-title{
+    font-size: 1.7rem;
+}
+
+.forest-card-prop-val{
+    font-size: 3rem;
+}
