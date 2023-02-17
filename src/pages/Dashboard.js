@@ -18,6 +18,9 @@ export const Dashboard = () => {
 
         <div className="dashboard-page">
             <Nav/>
+            <div className='dashboard-main-container'>
+
+            </div>
 
         </div>
 

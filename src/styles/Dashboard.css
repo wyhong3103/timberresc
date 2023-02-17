@@ -1,0 +1,11 @@
+.dashboard-page{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-main-container{
+    flex-grow: 1;
+    height : 100%;
+    padding : 2rem 15rem 2rem 15rem;
+}
