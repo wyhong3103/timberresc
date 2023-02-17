@@ -108,6 +108,7 @@ nav{
     height : 4rem;
     width : 4rem;
     object-fit: cover;
+    box-shadow: 0 0 50px #ccc;
 }
 
 .nav-user-profile p{
