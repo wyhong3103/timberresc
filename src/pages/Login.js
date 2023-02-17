@@ -12,7 +12,7 @@ export const Login = ({setLoggedIn, setUsername, setPfp}) => {
         // Dummy Data, will be changed to firebase later
         setLoggedIn(true);
         setUsername("test")
-        setPfp("https://assets.popbuzz.com/2021/05/what-does-pfp-mean-on-tiktok-1612367739-view-0.png");
+        setPfp("https://wallpapers-clan.com/wp-content/uploads/2022/05/cute-pfp-25.jpg");
     }
 
     return(
