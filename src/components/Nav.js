@@ -47,7 +47,6 @@ export const Nav = () => {
                     <div className="nav-user">
                         <div className="nav-user-profile">
                             <img src={context.pfp} alt="user-pfp"/>
-                            <p>{context.username}</p>
                         </div>
                         <button className="nav-logout-btn">
                             Log Out
