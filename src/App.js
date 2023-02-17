@@ -1,3 +1,4 @@
+import './styles/App.css';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import { AccountContext } from './context/AcountContext';
 import { Home } from './pages/Home';
