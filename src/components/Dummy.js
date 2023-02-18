@@ -4,10 +4,12 @@ export const Dummy = (() => {
     let subscribers = [];
     const forest = {};
 
-    const init = (() => {
+    // Initialization
+    (() => {
         for(let i = 0; i < 3; i++)
         {
             forest[`${i}`] = {};
+            forest[`${i}`].forestName = `Forest ${i}`;
             for(let j = 0; j < 5; j++)
             {
                 forest[`${i}`][`${j}`] = [];
@@ -20,6 +22,7 @@ export const Dummy = (() => {
                         lat : Math.random() * 100,
                         lon : Math.random() * 100,
                         nodeID : `${j}`,
+                        rain : Math.floor(Math.random() * 2),
                         timestamp : Date.now()
                     });
                 }
@@ -39,10 +42,13 @@ export const Dummy = (() => {
         subscribers = [...temp];
     }
 
+    // Random generate data every 3 seconds
     setInterval(
         () => {
             for(const i of Object.keys(forest)){
                 for(const j of Object.keys(forest[i])){
+                    if (j === 'forestName') continue;
+
                     forest[i][j].shift();
                     forest[i][j].push(
                         {
