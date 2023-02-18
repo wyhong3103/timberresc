@@ -1,0 +1,12 @@
+.google-map-container{
+    width : 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.map-container{
+    height : 25rem;
+    width : 100%;
+    border-radius: 1rem;
+}

@@ -1,0 +1,40 @@
+.tree-graph-node-comp{
+    flex-grow: 1;
+    padding : 2rem 2rem 2rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tree-graph-node-container{
+    display : grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap : 1rem;
+}
+
+.chart-comp-container h3, .tree-graph-node-map h3{
+    font-size: 2rem;
+    text-align: center;
+    font-family: var(--normal-font);
+    color : var(--gray2);
+}
+
+.tree-graph-node-rain, .tree-graph-node-bat-stat{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.rain-stat-title, .bat-stat-title{
+    font-size: 4rem;
+    font-family: var(--normal-font);
+    color : var(--gray2);
+}
+
+.bat-stat-result, .rain-stat-result{
+    font-size: 3rem;
+    font-family: var(--normal-font);
+    color : var(--gray2);
+}

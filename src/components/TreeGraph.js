@@ -88,7 +88,6 @@ export const TreeGraph = ({id, setComponent, setViewNode, setNode}) => {
 
                 width={dimension[0]}
                 height={dimension[1]}
-                backgroundColor="#faf9f6"
 
                 onNodeClick={
                     (node) => 

@@ -1,5 +1,7 @@
+import '../styles/TreeGraphNode.css';
 import { Chart } from './Chart';
-import { useState, useEffect, useRef } from 'react';
+import { Map } from './Map';
+import { useState, useEffect } from 'react';
 import { timestampToTimeString } from "../util/util";
 import { Dummy } from "../util/Dummy";
 
@@ -12,10 +14,10 @@ export const TreeGraphNode = ({treeID, nodeID, setViewNode}) => {
         labels : [],
         datasets : [
             {
-                label : "Temperature",
+                label : `Node ${nodeID}`,
                 data : [],
-                borderColor: 'rgb(255, 99, 132)',
-                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                borderColor: '#3f3f46',
+                backgroundColor: '#171717;',
             }
         ]
     });
@@ -24,10 +26,10 @@ export const TreeGraphNode = ({treeID, nodeID, setViewNode}) => {
         labels : [],
         datasets : [
             {
-                label : "Humidity",
+                label : `Node ${nodeID}`,
                 data : [],
-                borderColor: 'rgb(255, 99, 132)',
-                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                borderColor: '#3f3f46',
+                backgroundColor: '#171717;',
             }
         ]
     });
@@ -36,10 +38,10 @@ export const TreeGraphNode = ({treeID, nodeID, setViewNode}) => {
         labels : [],
         datasets : [
             {
-                label : "Heat Index",
+                label : `Node ${nodeID}`,
                 data : [],
-                borderColor: 'rgb(255, 99, 132)',
-                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                borderColor: '#3f3f46',
+                backgroundColor: '#171717;',
             }
         ]
     });
@@ -98,22 +100,37 @@ export const TreeGraphNode = ({treeID, nodeID, setViewNode}) => {
     return(
         <div className='tree-graph-node-comp'>
             <div className='tree-graph-node-container'>
-                <div className='tree-graph-node-bat-stat'>
-                    <p className='bat-stat-title'>
-                        Battery Status
-                    </p>
-                    <p className='bat-stat-result'>
-                        {batStat}
+                <div className="tree-graph-node-chart chart-comp-container">
+                    <h3>Temperature</h3>
+                    <Chart data={tempData}/>
+                </div>
+                <div className="tree-graph-node-chart chart-comp-container">
+                    <h3>Humidity</h3>
+                    <Chart data={humidData}/>
+                </div>
+                <div className="tree-graph-node-chart chart-comp-container">
+                    <h3>Heat Index</h3>
+                    <Chart data={heatIndexData}/>
+                </div>
+                <div className='tree-graph-node-rain'>
+                    <h3 className='rain-stat-title'>
+                        Rain Status
+                    </h3>
+                    <p className='rain-stat-result'>
+                        {(rainStat === 1 ? "Raining" : "Not Raining")}
                     </p>
                 </div>
                 <div className='tree-graph-node-map'>
-                    Google Map Placeholder, {coord}
+                    <h3>Map</h3>
+                    <Map coord={coord}/>
                 </div>
-                <Chart data={tempData}/>
-                <Chart data={humidData}/>
-                <Chart data={heatIndexData}/>
-                <div className='tree-graph-node-rain'>
-                    Is Raining : {rainStat}
+                <div className='tree-graph-node-bat-stat'>
+                    <h3 className='bat-stat-title'>
+                        Battery Status
+                    </h3>
+                    <p className='bat-stat-result'>
+                        {batStat}
+                    </p>
                 </div>
             </div>
         </div>
