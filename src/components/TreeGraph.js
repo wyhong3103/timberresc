@@ -1,13 +1,22 @@
+import '../styles/TreeGraph.css';
 import { getMST } from "../util/MST"
 import { Dummy } from "../util/Dummy"
 import ForceGraph2D from 'react-force-graph-2d';
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
-export const TreeGraph = ({id}) => {
+export const TreeGraph = ({id, setComponent}) => {
     const [graphData, setGraphData] = useState({
         nodes : [],
         links : []
     });
+
+    const [dimension, setDimension] = useState([0,0]);
+
+    const parentContainer = useRef();
+
+    const backToForest = () => {
+        setComponent(0);
+    }
 
     useEffect(
         () => {
@@ -58,9 +67,24 @@ export const TreeGraph = ({id}) => {
         }
     ,[])
 
+    
+    useEffect(() => {
+        if (!parentContainer.current) return; 
+
+        const resizeObserver = new ResizeObserver(() => {
+            setDimension([parentContainer.current.clientWidth, parentContainer.current.clientHeight]);
+        });
+        resizeObserver.observe(parentContainer.current);
+        return () => resizeObserver.disconnect(); // clean up 
+    }, []);
+
     return(
-        <div>
+        <div ref={parentContainer} className="tree-graph-comp">
             <ForceGraph2D
+
+                width={dimension[0]}
+                height={dimension[1]}
+                backgroundColor="#faf9f6"
 
                 nodeColor={
                     (node) => {
@@ -74,6 +98,9 @@ export const TreeGraph = ({id}) => {
                 graphData={graphData}
 
             />
+            <button className='back-to-forest-btn' onClick={backToForest}>
+                Back
+            </button>
         </div>
     )
 

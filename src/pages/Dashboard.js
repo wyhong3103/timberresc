@@ -28,7 +28,7 @@ export const Dashboard = () => {
                     component === 0 ?
                     <Forest setComponent={setComponent} setTree={setTreeID}/>
                     :
-                    <Tree treeID={treeID}/>
+                    <Tree treeID={treeID} setComponent={setComponent}/>
                 }
             </div>
         </div>
