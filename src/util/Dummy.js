@@ -15,7 +15,7 @@ export const Dummy = (() => {
                 forest[`${i}`][`${j}`] = [];
                 for(let k = 0; k < 10; k++){
                     forest[`${i}`][`${j}`].push({
-                        batHealth : "3.5V",
+                        batStat : "3.5V",
                         heatIndex : Math.floor(Math.random() * 100),
                         humid : Math.floor(Math.random() * 100),
                         temp : Math.floor(Math.random() * 100),
