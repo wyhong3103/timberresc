@@ -1,19 +1,14 @@
-import { Dummy } from './Dummy';
 import '../styles/Tree.css';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 export const Tree = () => {
-
-    useEffect(
-        () => {
-            const callback = (item) => console.log(item);
-            Dummy.subscribe(callback)
-            return () => {Dummy.unsubscribe(callback)};
-        }
-    , [])
+    // if 0 show tree graph, 1 show individual node
+    const [component, setComponent] = useState(0);
+    // Node to be monitored
+    const [node, setNode] = useState(0);
 
     return(
-        <div>
+        <div className='tree-comp'>
 
         </div>
     )
