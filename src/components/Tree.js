@@ -16,7 +16,7 @@ export const Tree = ({treeID, setComponent}) => {
                 ?
                 <TreeGraph id={treeID} setComponent={setComponent} setViewNode={setViewNode} setNode={setNode}/>
                 :
-                <TreeGraphNode treeID={treeID} nodeID={node} /> 
+                <TreeGraphNode treeID={treeID} nodeID={node} setViewNode={setViewNode} /> 
             }
         </div>
     )
