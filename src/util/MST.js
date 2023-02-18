@@ -23,7 +23,7 @@ function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
 
 function dfs(node, prev, p, adj){
     for(const i of adj[node]){
-        if (i !== prev){
+        if (i[0] !== prev){
             p[i[0]] = [node, i[1]];
             dfs(i[0], node, p, adj);
         }
@@ -37,18 +37,23 @@ export function getMST(nodes, gateway){
     const adj = {};
 
     for(let i = 0; i < nodes.length; i++){
+        adj[nodes[i][0]] = [];
         for(let j = 0; j < i; j++){
             adj[nodes[i][0]].push([nodes[j][0], getDistanceFromLatLonInKm(nodes[i][1][0], nodes[i][1][1], nodes[j][1][0], nodes[j][1][1])]);
             adj[nodes[j][0]].push([nodes[i][0], getDistanceFromLatLonInKm(nodes[i][1][0], nodes[i][1][1], nodes[j][1][0], nodes[j][1][1])]);
         }
     }
 
-    const pq = new MinPriorityQueue(item => item[1]);
+    const pq = new MinPriorityQueue(item => item[2]);
     pq.push([-1, gateway, 0]);
 
     const hashSet = new Set();
 
     const mstAdj = {};
+
+    for(const i of nodes){
+        mstAdj[i[0]] = [];
+    }
 
     while (!pq.isEmpty()){
         const cur = pq.pop();        
@@ -57,7 +62,7 @@ export function getMST(nodes, gateway){
 
         if (cur[0] !== -1){
             mstAdj[cur[0]].push([cur[1], cur[2]]);
-            mstAdj[cur[1]].push([cur[1], cur[2]]);
+            mstAdj[cur[1]].push([cur[0], cur[2]]);
         }
 
         hashSet.add(cur[1]);
