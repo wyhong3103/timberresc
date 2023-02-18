@@ -10,7 +10,7 @@ export const Forest = ({setComponent, setTree}) => {
                 26.3,
                 "Not Raining"
             ],
-            "forestID" : 1
+            "forestID" : '1'
         },
         {
             "forestName" : "Forest 2",
@@ -20,7 +20,7 @@ export const Forest = ({setComponent, setTree}) => {
                 28.7,
                 "Raining"
             ],
-            "forestID" : 2
+            "forestID" : '2'
         },
         {
             "forestName" : "Forest 3",
@@ -30,7 +30,7 @@ export const Forest = ({setComponent, setTree}) => {
                 30.1,
                 "Not Raining"
             ],
-            "forestID" : 3
+            "forestID" : '3'
         },
     ]
 
