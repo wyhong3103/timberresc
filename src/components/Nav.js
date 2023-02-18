@@ -23,7 +23,7 @@ export const Nav = () => {
     return(
         <nav>
             <h1 className='nav-title nav-left'>
-                Timber<span className='title-R'>R</span><span className='title-e'>e</span><span className='title-s'>s</span><span className='title-c'>c</span>
+                TimberResc
             </h1>
             <div className="nav-right">
                 <ul className="nav-links">

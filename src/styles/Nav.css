@@ -13,23 +13,7 @@ nav{
     font-size: 4rem;
     font-family: var(--title-font);
     user-select: none;
-    color : var(--gray2);
-}
-
-.title-R{
-    color : var(--red);
-}
-
-.title-e{
-    color : var(--yellow);
-}
-
-.title-s{
-    color : var(--green);
-}
-
-.title-c{
-    color : var(--blue);
+    color : #ffad49;
 }
 
 .nav-right{
