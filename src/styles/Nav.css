@@ -1,9 +1,12 @@
 nav{
+    height : 9rem;
     padding : 2rem 15rem 2rem 15rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    /*REMEMBER TO MAKE IT STICKY*/
+    /* backdrop-filter: blur(5px); */
 }
 
 .nav-title{
