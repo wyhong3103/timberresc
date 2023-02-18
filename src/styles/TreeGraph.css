@@ -3,4 +3,24 @@
     max-width: 100vw;
     width : 100%;
     overflow: hidden;
+    position: relative;
+}
+
+.back-to-forest-btn{
+    position: absolute;
+    bottom : 3rem;
+    right : 3rem;
+    font-family: var(--normal-font);
+    border-radius: 1rem;
+    font-size: 2rem;
+    padding: 1rem;
+    border: none;
+    background-color: var(--gray2);
+    color : white;
+    transition: all 0.3s;
+}
+
+.back-to-forest-btn:hover{
+    cursor: pointer;
+    background-color: var(--gray1);
 }
