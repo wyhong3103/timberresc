@@ -55,6 +55,12 @@ export const Forest = ({setComponent, setTree}) => {
         }
     ,[])
 
+    useEffect(
+        () => {
+            updData(Dummy.getForest());
+        }
+    , [])
+
 
     return(
         <div className="forest-comp">
