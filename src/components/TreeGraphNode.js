@@ -5,9 +5,6 @@ import { Dummy } from "../util/Dummy";
 
 export const TreeGraphNode = ({treeID, nodeID, setViewNode}) => {
 
-    const tempChart = useRef();
-    const humidChart = useRef();
-    const heatIndexChart = useRef();
     const [batStat, setBatStat] = useState(0);
     const [rainStat, setRainStat] = useState(0);
     const [coord, setCoord] = useState([0,0]);
