@@ -1,4 +1,4 @@
-import { Dummy } from './util/Dummy';
+import { Dummy } from '../util/Dummy';
 import { useState, useEffect } from 'react';
 import '../styles/Forest.css';
 
