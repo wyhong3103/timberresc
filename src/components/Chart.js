@@ -1,3 +1,4 @@
+import '../styles/Chart.css';
 import { Line } from 'react-chartjs-2';
 import {
     Chart as ChartJS,
@@ -43,7 +44,7 @@ export const Chart = ({data}) => {
     ,[data])
 
     return(
-        <div className='temp-chart'>
+        <div className='chart-container'>
             <Line ref={chart} options={options} data={data}/>
         </div>
     )
