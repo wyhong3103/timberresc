@@ -54,13 +54,14 @@ export const Dummy = (() => {
                     forest[i][j].shift();
                     forest[i][j].push(
                         {
-                            batHealth : "3.5V",
+                            batStat : "3.5V",
                             heatIndex : Math.floor(Math.random() * 100),
                             humid : Math.floor(Math.random() * 100),
                             temp : Math.floor(Math.random() * 100),
                             lat : Math.random() * 100,
                             lon : Math.random() * 100,
                             nodeID : `${j}`,
+                            rain : Math.floor(Math.random() * 2),
                             timestamp : Date.now()
                         }
                     )
