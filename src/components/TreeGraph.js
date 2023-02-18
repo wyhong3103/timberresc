@@ -66,7 +66,6 @@ export const TreeGraph = ({id, setComponent, setViewNode, setNode}) => {
                     }
                 )                
             }                
-            console.log(tempGraphData);
 
             setGraphData({...tempGraphData});
         }
