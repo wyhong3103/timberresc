@@ -4,7 +4,7 @@ import { Dummy } from "../util/Dummy"
 import ForceGraph2D from 'react-force-graph-2d';
 import { useEffect, useRef, useState } from "react"
 
-export const TreeGraph = ({id, setComponent}) => {
+export const TreeGraph = ({id, setComponent, setViewNode, setNode}) => {
     const [graphData, setGraphData] = useState({
         nodes : [],
         links : []
@@ -16,6 +16,11 @@ export const TreeGraph = ({id, setComponent}) => {
 
     const backToForest = () => {
         setComponent(0);
+    }
+
+    const viewNode = (nodeID) => {
+        setViewNode(1);
+        setNode(nodeID);
     }
 
     useEffect(
@@ -85,6 +90,15 @@ export const TreeGraph = ({id, setComponent}) => {
                 width={dimension[0]}
                 height={dimension[1]}
                 backgroundColor="#faf9f6"
+
+                onNodeClick={
+                    (node) => 
+                        node.name !== "Gateway"
+                        ?
+                        viewNode(node.id)
+                        :
+                        null
+                }
 
                 nodeColor={
                     (node) => {

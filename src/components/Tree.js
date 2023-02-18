@@ -1,4 +1,5 @@
 import '../styles/Tree.css';
+import { TreeGraphNode } from './TreeGraphNode';
 import { TreeGraph } from './TreeGraph';
 import { useState, useEffect } from 'react';
 
@@ -10,7 +11,13 @@ export const Tree = ({treeID, setComponent}) => {
 
     return(
         <div className='tree-comp'>
-            <TreeGraph id={treeID} setComponent={setComponent}/>
+            {
+                viewNode === 0
+                ?
+                <TreeGraph id={treeID} setComponent={setComponent} setViewNode={setViewNode} setNode={setNode}/>
+                :
+                <TreeGraphNode treeID={treeID} nodeID={node} /> 
+            }
         </div>
     )
 };
