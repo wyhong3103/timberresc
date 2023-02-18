@@ -41,6 +41,8 @@ export const Dummy = (() => {
         }
         subscribers = [...temp];
     }
+    
+    const getForest = () => forest;
 
     // Random generate data every 3 seconds
     setInterval(
@@ -74,6 +76,7 @@ export const Dummy = (() => {
 
     return{
         subscribe,
-        unsubscribe
+        unsubscribe,
+        getForest
     }
 })()
