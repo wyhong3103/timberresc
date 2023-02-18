@@ -1,10 +1,67 @@
+@media (min-width: 0px) {
+    nav{
+        height : 30rem;
+        padding : 2rem 5rem 2rem 5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-right{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap : 5rem;
+    }
+
+    .nav-links{
+        display: flex;
+        flex-direction: column;
+        gap : 3rem;
+        list-style: none;
+    }
+}
+
+@media (min-width: 500px) {
+    nav{
+        height : 9rem;
+        padding : 2rem 15rem 2rem 15rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .nav-right{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap : 5rem;
+    }
+
+    .nav-links{
+        display: flex;
+        flex-direction: row;
+        gap : 3rem;
+        list-style: none;
+    }
+
+}
+
+@media (min-width: 1200px) {
+    nav{
+        height : 9rem;
+        padding : 2rem 15rem 2rem 15rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
 nav{
-    height : 9rem;
-    padding : 2rem 15rem 2rem 15rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
     /*REMEMBER TO MAKE IT STICKY*/
     /* backdrop-filter: blur(5px); */
 }
@@ -16,25 +73,11 @@ nav{
     color : #ffad49;
 }
 
-.nav-right{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap : 5rem;
-}
-
-.nav-links{
-    display: flex;
-    flex-direction: row;
-    gap : 3rem;
-    list-style: none;
-}
-
 .nav-links li{
     position: relative;
     font-family: var(--normal-font);
     font-size: 1.7rem;
+    white-space: nowrap;
 }
 
 .nav-links li:hover{
@@ -69,6 +112,7 @@ nav{
     color : white;
     border-radius: 1rem;
     transition: all 0.3s;
+    white-space: nowrap;
 }
 
 .nav-login-btn:hover{
@@ -113,6 +157,7 @@ nav{
     color : white;
     font-size: 1.7rem;
     padding : 1rem;
+    white-space: nowrap;
 }
 
 .nav-logout-btn:hover{
