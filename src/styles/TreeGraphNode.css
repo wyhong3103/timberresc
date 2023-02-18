@@ -42,3 +42,23 @@
     font-family: var(--normal-font);
     color : var(--gray2);
 }
+
+
+.back-to-tree-btn{
+    position: absolute;
+    bottom : 3rem;
+    right : 3rem;
+    font-family: var(--normal-font);
+    border-radius: 1rem;
+    font-size: 2rem;
+    padding: 1rem;
+    border: none;
+    background-color: var(--gray2);
+    color : white;
+    transition: all 0.3s;
+}
+
+.back-to-tree-btn:hover{
+    cursor: pointer;
+    background-color: var(--gray1);
+}

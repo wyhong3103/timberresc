@@ -46,6 +46,10 @@ export const TreeGraphNode = ({treeID, nodeID, setViewNode}) => {
         ]
     });
 
+    const backToTree = () => {
+        setViewNode(0);
+    }
+
     const updData = (forest) => {
         const node = forest[treeID][nodeID];
 
@@ -133,6 +137,9 @@ export const TreeGraphNode = ({treeID, nodeID, setViewNode}) => {
                     </p>
                 </div>
             </div>
+            <button className='back-to-tree-btn' onClick={backToTree}>
+                Back
+            </button>
         </div>
     )
 
