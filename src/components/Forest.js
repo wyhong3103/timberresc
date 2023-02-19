@@ -68,9 +68,6 @@ export const Forest = ({setComponent, setTree}) => {
                 <h1>
                     Watchlist
                 </h1>
-                <button className='add-to-watchlist-btn'>
-                    Add To Watchlist
-                </button>
             </div>
             <div className="forest-card-container">
                 {

@@ -32,22 +32,6 @@
     display: flex;
 }
 
-.add-to-watchlist-btn{
-    font-family: var(--normal-font);
-    padding : 1rem;
-    border-radius: 1rem;
-    border: none;
-    font-size: 1.5rem;
-    color : white;
-    background-color: var(--gray2);
-    transition: all 0.3s;
-}
-
-.add-to-watchlist-btn:hover{
-    cursor: pointer;
-    background-color: var(--gray1);
-}
-
 .forest-top h1{
     font-family: var(--normal-font);
     font-weight: 800;
