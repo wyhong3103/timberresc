@@ -1,7 +1,7 @@
 import '../styles/Tree.css';
 import { TreeGraphNode } from './TreeGraphNode';
 import { TreeGraph } from './TreeGraph';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export const Tree = ({treeID, setComponent}) => {
     // if 0 show tree graph, 1 show individual node
