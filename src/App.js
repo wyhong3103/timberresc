@@ -13,11 +13,17 @@ export const App = () => {
     const auth = getAuth();
     const [loggedIn, setLoggedIn] = useState(false);
     const [username, setUsername] = useState("");
+    const [userID, setUserID] = useState("");
     const [pfp, setPfp] = useState("");
 
     onAuthStateChanged(auth, 
         (user) => {
-            if (user) setLoggedIn(true);
+            if (user){
+                setLoggedIn(true);
+                setUsername(user.displayName);
+                setPfp(user.photoURL);
+                setUserID(user.uid);
+            } 
         }
     )
 
@@ -26,7 +32,7 @@ export const App = () => {
             value = 
             {
                 {
-                    loggedIn, username, pfp, id
+                    loggedIn, username, pfp, userID
                 }
             }
         >
