@@ -45,7 +45,7 @@
 
 
 .back-to-tree-btn{
-    position: absolute;
+    position: fixed;
     bottom : 3rem;
     right : 3rem;
     font-family: var(--normal-font);
