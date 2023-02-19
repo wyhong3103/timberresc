@@ -1,4 +1,4 @@
-import { Dummy } from '../util/Dummy';
+import firestoreHandler from '../util/firestoreHandler';
 import { useState, useEffect } from 'react';
 import '../styles/Forest.css';
 
@@ -28,10 +28,11 @@ export const Forest = ({setComponent, setTree}) => {
                 if (j === "forestName"){
                     temp2.forestName = forest[i][j];
                 }else{
-                    temp2.status[0] += forest[i][j][9].temp;
-                    temp2.status[1] += forest[i][j][9].humid;
-                    temp2.status[2] += forest[i][j][9].heatIndex;
-                    temp2.status[3] += forest[i][j][9].rain;
+                    const last = forest[i][j].length - 1;
+                    temp2.status[0] += forest[i][j][last].temp;
+                    temp2.status[1] += forest[i][j][last].humid;
+                    temp2.status[2] += forest[i][j][last].heatIndex;
+                    temp2.status[3] += forest[i][j][last].rain;
                 }
             }
 
@@ -48,16 +49,19 @@ export const Forest = ({setComponent, setTree}) => {
 
     useEffect(
         () => {
-            Dummy.subscribe(updData);
-            return () => {
-                Dummy.unsubscribe(updData);
-            }
         }
     ,[])
 
     useEffect(
         () => {
-            updData(Dummy.getForest());
+            (async () => {
+                const forest = await firestoreHandler.getForest();
+                updData(forest);
+            })()
+            firestoreHandler.subscribe(updData);
+            return () => {
+                firestoreHandler.unsubscribe(updData);
+            }
         }
     , [])
 
