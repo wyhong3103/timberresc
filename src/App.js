@@ -58,6 +58,7 @@ export const App = () => {
                             setLoggedIn={setLoggedIn}
                             setUsername={setUsername}
                             setPfp={setPfp}
+                            setUserID={setUserID}
                             />
                         }
                     />
