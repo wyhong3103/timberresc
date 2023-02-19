@@ -1,6 +1,6 @@
 import '../styles/TreeGraph.css';
 import { getMST } from "../util/MST"
-import { Dummy } from "../util/Dummy"
+import firestoreHandler from '../util/firestoreHandler';
 import ForceGraph2D from 'react-force-graph-2d';
 import { useEffect, useRef, useState } from "react"
 
@@ -25,51 +25,56 @@ export const TreeGraph = ({id, setComponent, setViewNode, setNode}) => {
 
     useEffect(
         () => {
-            const nodes = [];
-            const tree = Dummy.getForest()[id];
-                
-            for(const i of Object.keys(tree)){
-                if (i === 'forestName') continue;
+            (async () => {
+                const nodes = [];
+                const tree = (await firestoreHandler.getForest())[id];
+                    
+                let gateway = "";
 
-                const nodeObj = tree[i][tree[i].length-1];
-                nodes.push([nodeObj.nodeID, [nodeObj.lat, nodeObj.lon]])
-            }
-            const to = getMST(nodes, nodes[0][0]);
+                for(const i of Object.keys(tree)){
+                    if (i === 'forestName') continue;
 
-            const tempGraphData = {
-                "nodes" : [],
-                "links" : []
-            }
-
-            tempGraphData.nodes.push(
-                {
-                    id : nodes[0][0],
-                    name : "Gateway",
-                    val : 3
+                    const nodeObj = tree[i][tree[i].length-1];
+                    if (nodeObj.isGateway === true) gateway = nodeObj.nodeID;
+                    nodes.push([nodeObj.nodeID, [nodeObj.lat, nodeObj.lon]])
                 }
-            )
+                const to = getMST(nodes, gateway);
 
-            for(const i of Object.keys(to)){
+                const tempGraphData = {
+                    "nodes" : [],
+                    "links" : []
+                }
+
                 tempGraphData.nodes.push(
                     {
-                        id : i,
-                        name : "Sensor Node",
-                        val : 1
+                        id : `${gateway}`,
+                        name : "Gateway",
+                        val : 3
                     }
-                )                
-                tempGraphData.links.push(
-                    {
-                        source : i,
-                        target : to[i][0],
-                        name : to[i][1],
-                        value : 2
-                    }
-                )                
-            }                
+                )
 
-            setGraphData({...tempGraphData});
+                for(const i of Object.keys(to)){
+                    tempGraphData.nodes.push(
+                        {
+                            id : i,
+                            name : "Sensor Node",
+                            val : 1
+                        }
+                    )                
+                    tempGraphData.links.push(
+                        {
+                            source : i,
+                            target : `${to[i][0]}`,
+                            name : to[i][1],
+                            value : 2
+                        }
+                    )                
+                }                
+
+                setGraphData({...tempGraphData});
+            })();
         }
-    ,[])
+    ,[id])
 
     
     useEffect(() => {

@@ -3,7 +3,7 @@ import { Chart } from './Chart';
 import { Map } from './Map';
 import { useState, useEffect } from 'react';
 import { timestampToTimeString } from "../util/util";
-import { Dummy } from "../util/Dummy";
+import firestoreHandler from '../util/firestoreHandler';
 
 export const TreeGraphNode = ({treeID, nodeID, setViewNode}) => {
 
@@ -94,9 +94,9 @@ export const TreeGraphNode = ({treeID, nodeID, setViewNode}) => {
 
     useEffect(
         () => {
-            Dummy.subscribe(updData);
+            firestoreHandler.subscribe(updData);
             return () => {
-                 Dummy.unsubscribe(updData);
+                 firestoreHandler.unsubscribe(updData);
             }
         }
     ,[])
