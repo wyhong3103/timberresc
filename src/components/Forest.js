@@ -37,7 +37,9 @@ export const Forest = ({setComponent, setTree}) => {
             }
 
             // Get the average
-            for(let j = 0; j < 3; j++) temp2.status[j] /= Object.keys(forest[i]).length-1;
+            for(let j = 0; j < 3; j++){
+                temp2.status[j] /= Object.keys(forest[i]).length-1;
+            } 
 
             // If majority rains, consider it raining
             temp2.status[3] = (temp2.status[3] >= Math.floor((Object.keys(forest[i]).length-1)/2) ? 1 : 0);
@@ -89,15 +91,15 @@ export const Forest = ({setComponent, setTree}) => {
                                 <h3 className='forest-card-name'>{item.forestName}</h3>
                                 <div className="forest-card-temp">
                                     <p className='forest-card-prop-title'>Temperature</p>
-                                    <p className='forest-card-prop-val'>{item.status[0]}</p>
+                                    <p className='forest-card-prop-val'>{item.status[0].toFixed(2)}</p>
                                 </div>
                                 <div className="forest-card-humid">
                                     <p className='forest-card-prop-title'>Humidity</p>
-                                    <p className='forest-card-prop-val'>{item.status[1]}</p>
+                                    <p className='forest-card-prop-val'>{item.status[1].toFixed(2)}</p>
                                 </div>
                                 <div className="forest-card-heat">
                                     <p className='forest-card-prop-title'>Heat Index</p>
-                                    <p className='forest-card-prop-val'>{item.status[2]}</p>
+                                    <p className='forest-card-prop-val'>{item.status[2].toFixed(2)}</p>
                                 </div>
                                 <p className='forest-card-rain'>Rain Status : {(item.status[3] === 1 ? "Raining" : "Not Raining")}</p>
                             </div>
