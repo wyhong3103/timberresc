@@ -1,19 +1,42 @@
 import '../styles/Login.css';
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import { AccountContext } from "../context/AcountContext";
 import { Nav } from "../components/Nav";
+import { getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult} from 'firebase/auth';
 // Login Page
 
-export const Login = ({setLoggedIn, setUsername, setPfp}) => {
+export const Login = ({setLoggedIn, setUsername, setPfp, setUserID}) => {
+    const auth = getAuth()
+    const provider = new GoogleAuthProvider();
     const loggedIn = useContext(AccountContext).loggedIn;
+    const [showLoginError, setShowLoginError] = useState(false);
 
     const logIn = () => {
-        // Dummy Data, will be changed to firebase later
-        setLoggedIn(true);
-        setUsername("test")
-        setPfp("https://wallpapers-clan.com/wp-content/uploads/2022/05/cute-pfp-25.jpg");
+        signInWithRedirect(auth, provider);
     }
+
+    useEffect(
+        () => { 
+            getRedirectResult(auth)
+            .then(
+                (result) => {
+                    if (result && result.user){
+                        setLoggedIn(true);
+                        setUsername(result.user.displayName);
+                        setPfp(result.user.photoURL);
+                        setUserID(result.user.uid);
+                    }
+                }
+            )
+            .catch(
+                (error) => {
+                    console.error(error);
+                    setShowLoginError(true);
+                }
+            )
+        }
+    , [])
 
     return(
         loggedIn ?
@@ -34,6 +57,14 @@ export const Login = ({setLoggedIn, setUsername, setPfp}) => {
                         <p>Log In With Google</p>
                     </div>
                 </button> 
+                {
+                    showLoginError === true ?
+                    <p className='login-error-msg'>
+                        Something went wrong, please try again later.
+                    </p>
+                    :
+                    null
+                }
             </div>
         </div>
     )
