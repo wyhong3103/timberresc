@@ -1,6 +1,6 @@
 @media (min-width: 0px) {
     nav{
-        height : 30rem;
+        height : 34rem;
         padding : 2rem 5rem 2rem 5rem;
         display: flex;
         flex-direction: column;
@@ -26,7 +26,7 @@
 
 @media (min-width: 500px) {
     nav{
-        height : 9rem;
+        height : 13rem;
         padding : 2rem 15rem 2rem 15rem;
         display: flex;
         flex-direction: column;
@@ -58,13 +58,13 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        position: -webkit-sticky; /* Safari */
+        position : sticky;
+        top: 0;
+        background-color: white;
     }
 }
 
-nav{
-    /*REMEMBER TO MAKE IT STICKY*/
-    /* backdrop-filter: blur(5px); */
-}
 
 .nav-title{
     font-size: 4rem;
