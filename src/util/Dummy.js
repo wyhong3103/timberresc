@@ -47,6 +47,7 @@ export const Dummy = (() => {
     // Random generate data every 3 seconds
     setInterval(
         () => {
+            let first = true;
             for(const i of Object.keys(forest)){
                 for(const j of Object.keys(forest[i])){
                     if (j === 'forestName') continue;
@@ -62,11 +63,18 @@ export const Dummy = (() => {
                             lon : Math.random() * 100,
                             nodeID : `${j}`,
                             rain : Math.floor(Math.random() * 2),
-                            timestamp : Date.now()
+                            timestamp : Date.now(),
+                            isGateway : false
                         }
                     )
+                    if (first){
+                        forest[i][j].isGateway = true;
+                        first = false;
+                    }
                 }
             }
+
+
             subscribers.forEach(fn => {
                 fn(forest);
             })
