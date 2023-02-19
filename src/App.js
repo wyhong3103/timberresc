@@ -23,7 +23,12 @@ export const App = () => {
                 setUsername(user.displayName);
                 setPfp(user.photoURL);
                 setUserID(user.uid);
-            } 
+            }else{
+                setLoggedIn(false);
+                setUsername("");
+                setPfp("");
+                setUserID("");
+            }
         }
     )
 

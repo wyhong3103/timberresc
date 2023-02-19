@@ -10,7 +10,7 @@ export const Dummy = (() => {
         {
             forest[`${i}`] = {};
             forest[`${i}`].forestName = `Forest ${i}`;
-            for(let j = 0; j < 5; j++)
+            for(let j = 0; j < 10; j++)
             {
                 forest[`${i}`][`${j}`] = [];
                 for(let k = 0; k < 10; k++){

@@ -2,8 +2,10 @@ import '../styles/Nav.css';
 import { AccountContext } from "../context/AcountContext";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
+import { getAuth, signOut } from 'firebase/auth';
 
 export const Nav = () => {
+    const auth = getAuth();
     const context = useContext(AccountContext);
     const navigate = useNavigate();
 
@@ -19,6 +21,10 @@ export const Nav = () => {
     const toLogIn = () => {
         navigate("/login");
     };
+
+    const logOut = () => {
+        signOut(auth);
+    }
 
     return(
         <nav>
@@ -48,7 +54,7 @@ export const Nav = () => {
                         <div className="nav-user-profile">
                             <img src={context.pfp} alt="user-pfp"/>
                         </div>
-                        <button className="nav-logout-btn">
+                        <button className="nav-logout-btn" onClick={logOut}>
                             Log Out
                         </button>
                     </div>
