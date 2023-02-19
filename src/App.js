@@ -6,20 +6,27 @@ import { Dashboard } from './pages/Dashboard';
 import { Team } from './pages/Team';
 import { Login } from './pages/Login';
 import { useState } from 'react';
+import { getAuth, onAuthStateChanged} from 'firebase/auth';
 
 
 export const App = () => {
-
+    const auth = getAuth();
     const [loggedIn, setLoggedIn] = useState(false);
     const [username, setUsername] = useState("");
     const [pfp, setPfp] = useState("");
+
+    onAuthStateChanged(auth, 
+        (user) => {
+            if (user) setLoggedIn(true);
+        }
+    )
 
     return(
         <AccountContext.Provider 
             value = 
             {
                 {
-                    loggedIn, username, pfp
+                    loggedIn, username, pfp, id
                 }
             }
         >
