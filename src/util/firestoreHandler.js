@@ -76,7 +76,6 @@ const firestoreHandler = (() => {
 
     setInterval(
         () => {
-            console.log("hi");
             (async () => {
                 for(let i = 0; i < subscribers.length; i++){
                     const forest = await getForest();
