@@ -1,5 +1,5 @@
 import { getAuth } from 'firebase/auth';
-import { getFirestore, doc, getDoc } from 'firebase/firestore';
+import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
 
 // Only call it when user is logged in
 const firestoreHandler = (() => {
@@ -12,6 +12,17 @@ const firestoreHandler = (() => {
     const fetchWatchlist = async () => { 
         const uid = auth.currentUser.uid;
         const watchlistSnapshot = await getDoc(doc(db, 'users', uid));
+
+        if (watchlistSnapshot.data() === undefined){
+            await setDoc(
+                doc(db, 'users',uid),
+                {
+                    watchlist : []
+                }
+            );
+            return [];
+        }
+
         return watchlistSnapshot.data().watchlist;
     }
 
