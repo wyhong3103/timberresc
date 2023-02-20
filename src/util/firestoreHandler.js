@@ -1,10 +1,11 @@
 import { getAuth } from 'firebase/auth';
-import { getFirestore, doc, getDoc, query, orderBy, limit, collection, getDocs } from 'firebase/firestore';
+import { getFirestore, doc, getDoc } from 'firebase/firestore';
 
 // Only call it when user is logged in
 const firestoreHandler = (() => {
     const auth = getAuth();
     const db = getFirestore();
+    let forest = {};
     const subscribers = [];
 
     const fetchWatchlist = async () => { 
@@ -19,7 +20,7 @@ const firestoreHandler = (() => {
     }
 
     const getForest = async () => {
-        const forest = {};
+        const tempForest = {};
 
         const watchlist = await fetchWatchlist();
 
@@ -31,34 +32,21 @@ const firestoreHandler = (() => {
             const forestNameSnapshot = await getDoc(doc(db, 'forestName', watchlist[i]));
             const forestName = forestNameSnapshot.data().name;
 
-            forest[watchlist[i]] = {};
-            forest[watchlist[i]]['forestName'] = forestName;
+            tempForest[watchlist[i]] = {};
+            tempForest[watchlist[i]]['forestName'] = forestName;
             
             //Get 10 latest data
             for(let j = 0; j < nodeArr.length; j++){
 
-                forest[watchlist[i]][nodeArr[j]] = [];
 
-                const q = query(collection(db, 'forestData', watchlist[i], `${nodeArr[j]}`), orderBy('timestamp', 'desc'), limit(10));
-                const querySnapshot = await getDocs(q);
+                const nodeDataRef = doc(db, 'forestData', watchlist[i], `${nodeArr[j]}`, 'data');
+                const querySnapshot = await getDoc(nodeDataRef);
                 
-                const tempData = [];
-
-                querySnapshot.forEach(
-                    (doc) => {
-                        tempData.push(
-                            doc.data()
-                        );
-                    }
-                )
-                
-                for(let k = tempData.length-1; k >= 0; k--){
-                    forest[watchlist[i]][j].push(tempData[k]);
-                }
+                tempForest[watchlist[i]][nodeArr[j]] = querySnapshot.data();
             }
         }
 
-        return forest;
+        forest = tempForest;
     };
 
     const subscribe = (fn) => {
@@ -77,8 +65,8 @@ const firestoreHandler = (() => {
     setInterval(
         () => {
             (async () => {
+                await getForest();
                 for(let i = 0; i < subscribers.length; i++){
-                    const forest = await getForest();
                     subscribers[i](forest);
                 }
             })();
