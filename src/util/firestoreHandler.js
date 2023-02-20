@@ -37,10 +37,6 @@ const firestoreHandler = (() => {
     }
 
     const unsubscribe = (fn) => {
-        const temp = [];
-        for(const i of subscribers){
-            if (i !== fn) temp.push(i);
-        }
         const index = subscribers.indexOf(fn);
         subscribers.splice(index, 1);
     }
