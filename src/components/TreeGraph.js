@@ -32,11 +32,11 @@ export const TreeGraph = ({id, setComponent, setViewNode, setNode}) => {
                 let gateway = "";
 
                 for(const i of Object.keys(tree)){
-                    if (i === 'forestName') continue;
+                    if (i === 'name') continue;
 
                     const nodeObj = tree[i];
-                    if (nodeObj.isGateway === true) gateway = nodeObj.nodeID;
-                    nodes.push([nodeObj.nodeID, [nodeObj.lat, nodeObj.lon]])
+                    if (nodeObj.isGateway === true) gateway = `${nodeObj.nodeID}`;
+                    nodes.push([`${nodeObj.nodeID}`, [nodeObj.lat, nodeObj.lon]])
                 }
                 const to = getMST(nodes, gateway);
 
@@ -57,13 +57,13 @@ export const TreeGraph = ({id, setComponent, setViewNode, setNode}) => {
                     tempGraphData.nodes.push(
                         {
                             id : i,
-                            name : "Sensor Node",
+                            name : `Sensor Node ${i}`,
                             val : 1
                         }
                     )                
                     tempGraphData.links.push(
                         {
-                            source : i,
+                            source : `${i}`,
                             target : `${to[i][0]}`,
                             name : to[i][1],
                             value : 2
