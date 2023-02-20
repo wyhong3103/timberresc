@@ -65,7 +65,7 @@ export const TreeGraph = ({id, setComponent, setViewNode, setNode}) => {
                         {
                             source : `${i}`,
                             target : `${to[i][0]}`,
-                            name : to[i][1],
+                            name : `${to[i][1].toFixed(2)}km`,
                             value : 2
                         }
                     )                
