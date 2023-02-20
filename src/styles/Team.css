@@ -1,3 +1,16 @@
+@media (min-width : 0px){
+    .team-main-container{
+        padding : 4rem 5rem 4rem 5rem;
+        overflow: auto;
+    }
+}
+
+@media (min-width : 700px){
+    .team-main-container{
+        padding : 4rem 15rem 4rem 15rem;
+    }
+}
+
 .team-page{
     min-height: 100vh;
     display: flex;
@@ -5,15 +18,66 @@
 }
 
 .team-main-container{
-    flex-grow: 1;
-    height : 100%;
-    padding : 2rem 15rem 2rem 15rem;
+    width : 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    gap : 4rem;
 }
 
-.team-main-container h3{
-    font-family: var(--title-font);
-    font-size: 5rem;
+.team-main-container h1{
+    font-family: var(--normal-font);
+    font-size: 3.5rem;
+    color : var(--gray2);
 }
+
+.team-card-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap : 10rem;
+}
+
+.team-member-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding : 2rem;
+    border-radius: 1rem;
+    height : 45rem;
+    gap : 2rem;
+    font-family: var(--normal-font);
+}
+
+.member-pfp{
+    border-radius: 5rem;
+    height : 20rem;
+    width : 20rem;
+}
+
+.member-name{
+    font-size: 2rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.member-role{
+    font-size: 1.5rem;
+}
+
+.member-social{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap : 3rem;
+}
+
+.member-social img{
+    height : 3rem;
+    width : 3rem;
+    object-fit: contain;
+}
+
+
