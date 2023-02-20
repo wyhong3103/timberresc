@@ -102,6 +102,7 @@ export const TreeGraphNode = ({treeID, nodeID, setViewNode}) => {
         }
     ,[])
 
+
     return(
         <div className='tree-graph-node-comp'>
             <div className='tree-graph-node-container'>

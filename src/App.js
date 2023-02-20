@@ -13,7 +13,6 @@ export const App = () => {
     const auth = getAuth();
     const [loggedIn, setLoggedIn] = useState(false);
     const [username, setUsername] = useState("");
-    const [userID, setUserID] = useState("");
     const [pfp, setPfp] = useState("");
 
     onAuthStateChanged(auth, 
@@ -22,12 +21,10 @@ export const App = () => {
                 setLoggedIn(true);
                 setUsername(user.displayName);
                 setPfp(user.photoURL);
-                setUserID(user.uid);
             }else{
                 setLoggedIn(false);
                 setUsername("");
                 setPfp("");
-                setUserID("");
             }
         }
     )
@@ -37,7 +34,7 @@ export const App = () => {
             value = 
             {
                 {
-                    loggedIn, username, pfp, userID
+                    loggedIn, username, pfp
                 }
             }
         >
@@ -63,7 +60,6 @@ export const App = () => {
                             setLoggedIn={setLoggedIn}
                             setUsername={setUsername}
                             setPfp={setPfp}
-                            setUserID={setUserID}
                             />
                         }
                     />

@@ -6,7 +6,7 @@ import { Nav } from "../components/Nav";
 import { getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult} from 'firebase/auth';
 // Login Page
 
-export const Login = ({setLoggedIn, setUsername, setPfp, setUserID}) => {
+export const Login = ({setLoggedIn, setUsername, setPfp}) => {
     const auth = getAuth()
     const provider = new GoogleAuthProvider();
     const loggedIn = useContext(AccountContext).loggedIn;
@@ -25,7 +25,6 @@ export const Login = ({setLoggedIn, setUsername, setPfp, setUserID}) => {
                         setLoggedIn(true);
                         setUsername(result.user.displayName);
                         setPfp(result.user.photoURL);
-                        setUserID(result.user.uid);
                     }
                 }
             )
