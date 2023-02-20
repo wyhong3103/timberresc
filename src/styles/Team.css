@@ -54,6 +54,7 @@
     height : 45rem;
     gap : 2rem;
     font-family: var(--normal-font);
+    color : var(--gray2);
 }
 
 .member-pfp{
