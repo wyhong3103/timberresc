@@ -27,7 +27,7 @@ export const Forest = ({setComponent, setTree}) => {
             for(const j of Object.keys(forest[i])){
                 if (j === "name"){
                     temp2.forestName = forest[i][j];
-                }else{
+                }else if (forest[i][j].isGateway === false){
                     temp2.status[0] += forest[i][j].temp;
                     temp2.status[1] += forest[i][j].humid;
                     temp2.status[2] += forest[i][j].heatIndex;
