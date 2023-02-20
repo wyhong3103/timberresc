@@ -1,3 +1,4 @@
+import uniqid from 'uniqid';
 import firestoreHandler from '../util/firestoreHandler';
 import { useState, useEffect } from 'react';
 import '../styles/Forest.css';
@@ -85,7 +86,7 @@ export const Forest = ({setComponent, setTree}) => {
 
                     data.map(item => {
                         return(
-                            <div className="forest-card" onClick={() => monitorTree(item.forestID)}>
+                            <div key={uniqid()} className="forest-card" onClick={() => monitorTree(item.forestID)}>
                                 <h3 className='forest-card-name'>{item.forestName}</h3>
                                 <div className="forest-card-temp">
                                     <p className='forest-card-prop-title'>Temperature</p>
