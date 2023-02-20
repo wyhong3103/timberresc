@@ -3,6 +3,7 @@ import { getFirestore, doc, getDoc } from 'firebase/firestore';
 
 // Only call it when user is logged in
 const firestoreHandler = (() => {
+    let inRead = false;
     const auth = getAuth();
     const db = getFirestore();
     let forest = {};
@@ -14,36 +15,14 @@ const firestoreHandler = (() => {
         return watchlistSnapshot.data().watchlist;
     }
 
-    const fetchNodes = async (forestID) => { 
-        const forestNodeSnapshot = await getDoc(doc(db, 'forestNode', forestID));
-        return forestNodeSnapshot.data().nodes;
-    }
-
     const updForest = async () => {
         const tempForest = {};
 
         const watchlist = await fetchWatchlist();
 
         for(let i = 0; i < watchlist.length; i++){
-            const nodeArr = await fetchNodes(watchlist[i]);
-            
-            //Query forest name
-
-            const forestNameSnapshot = await getDoc(doc(db, 'forestName', watchlist[i]));
-            const forestName = forestNameSnapshot.data().name;
-
-            tempForest[watchlist[i]] = {};
-            tempForest[watchlist[i]]['forestName'] = forestName;
-            
-            //Get 10 latest data
-            for(let j = 0; j < nodeArr.length; j++){
-
-
-                const nodeDataRef = doc(db, 'forestData', watchlist[i], `${nodeArr[j]}`, 'data');
-                const querySnapshot = await getDoc(nodeDataRef);
-                
-                tempForest[watchlist[i]][nodeArr[j]] = querySnapshot.data();
-            }
+            const forestSnapshot = await getDoc(doc(db, 'forest', watchlist[i]));
+            tempForest[watchlist[i]] = forestSnapshot.data();
         }
 
         forest = tempForest;
@@ -66,14 +45,24 @@ const firestoreHandler = (() => {
         subscribers.splice(index, 1);
     }
 
+    const setRead = () => {
+        inRead = true;
+    }
+
+    const unsetRead = () => {
+        inRead = false
+    }
+
     setInterval(
         () => {
-            (async () => {
-                await updForest();
-                for(let i = 0; i < subscribers.length; i++){
-                    subscribers[i](forest);
-                }
-            })();
+            if (inRead){
+                (async () => {
+                    await updForest();
+                    for(let i = 0; i < subscribers.length; i++){
+                        subscribers[i](forest);
+                    }
+                })();
+            }
         }
     ,5000)
 
@@ -81,6 +70,8 @@ const firestoreHandler = (() => {
         subscribe,
         unsubscribe,
         getForest,
+        setRead,
+        unsetRead
     }
 })();
 

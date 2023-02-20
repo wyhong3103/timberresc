@@ -57,45 +57,46 @@ export const TreeGraphNode = ({treeID, nodeID, setViewNode}) => {
         const humidDataT = {...humidData};
         const heatIndexDataT = {...heatIndexData};
 
-        const last = node.length-1;
         if (tempDataT.labels.length === 10) {
             tempDataT.labels.shift();
-            tempDataT.labels.push(timestampToTimeString(node[last].timestamp));
+            tempDataT.labels.push(timestampToTimeString(node.timestamp));
             tempDataT.datasets[0].data.shift();
-            tempDataT.datasets[0].data.push(node[last].temp);
+            tempDataT.datasets[0].data.push(node.temp);
 
             humidDataT.labels.shift();
-            humidDataT.labels.push(timestampToTimeString(node[last].timestamp));
+            humidDataT.labels.push(timestampToTimeString(node.timestamp));
             humidDataT.datasets[0].data.shift();
-            humidDataT.datasets[0].data.push(node[last].humid);
+            humidDataT.datasets[0].data.push(node.humid);
 
             heatIndexDataT.labels.shift();
-            heatIndexDataT.labels.push(timestampToTimeString(node[last].timestamp));
+            heatIndexDataT.labels.push(timestampToTimeString(node.timestamp));
             heatIndexDataT.datasets[0].data.shift();
-            heatIndexDataT.datasets[0].data.push(node[last].heatIndex);
+            heatIndexDataT.datasets[0].data.push(node.heatIndex);
         }else{
-            tempDataT.labels.push(timestampToTimeString(node[last].timestamp));
-            tempDataT.datasets[0].data.push(node[last].temp);
+            tempDataT.labels.push(timestampToTimeString(node.timestamp));
+            tempDataT.datasets[0].data.push(node.temp);
 
-            humidDataT.labels.push(timestampToTimeString(node[last].timestamp));
-            humidDataT.datasets[0].data.push(node[last].humid);
+            humidDataT.labels.push(timestampToTimeString(node.timestamp));
+            humidDataT.datasets[0].data.push(node.humid);
 
-            heatIndexDataT.labels.push(timestampToTimeString(node[last].timestamp));
-            heatIndexDataT.datasets[0].data.push(node[last].heatIndex);
+            heatIndexDataT.labels.push(timestampToTimeString(node.timestamp));
+            heatIndexDataT.datasets[0].data.push(node.heatIndex);
         }
 
         setTempData({...tempDataT});
         setHumidData({...humidDataT});
         setHeatIndexData({...heatIndexDataT});
-        setBatStat(node[last].batStat);
-        setRainStat(node[last].rain);
-        setCoord([node[last].lat, node[last].lon]);
+        setBatStat(node.batStat);
+        setRainStat(node.rain);
+        setCoord([node.lat, node.lon]);
     }
 
     useEffect(
         () => {
+            firestoreHandler.setRead();
             firestoreHandler.subscribe(updData);
             return () => {
+                firestoreHandler.unsetRead();
                  firestoreHandler.unsubscribe(updData);
             }
         }

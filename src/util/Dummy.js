@@ -12,20 +12,17 @@ export const Dummy = (() => {
             forest[`${i}`].forestName = `Forest ${i}`;
             for(let j = 0; j < 10; j++)
             {
-                forest[`${i}`][`${j}`] = [];
-                for(let k = 0; k < 10; k++){
-                    forest[`${i}`][`${j}`].push({
-                        batStat : "3.5V",
-                        heatIndex : Math.floor(Math.random() * 100),
-                        humid : Math.floor(Math.random() * 100),
-                        temp : Math.floor(Math.random() * 100),
-                        lat : Math.random() * 100,
-                        lon : Math.random() * 100,
-                        nodeID : `${j}`,
-                        rain : Math.floor(Math.random() * 2),
-                        timestamp : Date.now()
-                    });
-                }
+                forest[`${i}`][`${j}`] = {
+                    batStat : "3.5V",
+                    heatIndex : Math.floor(Math.random() * 100),
+                    humid : Math.floor(Math.random() * 100),
+                    temp : Math.floor(Math.random() * 100),
+                    lat : Math.random() * 100,
+                    lon : Math.random() * 100,
+                    nodeID : `${j}`,
+                    rain : Math.floor(Math.random() * 2),
+                    timestamp : Date.now()
+                };
             }
         }
     })();
@@ -50,23 +47,21 @@ export const Dummy = (() => {
             let first = true;
             for(const i of Object.keys(forest)){
                 for(const j of Object.keys(forest[i])){
-                    if (j === 'forestName') continue;
+                    if (j === 'name') continue;
 
-                    forest[i][j].shift();
-                    forest[i][j].push(
-                        {
-                            batStat : "3.5V",
-                            heatIndex : Math.floor(Math.random() * 100),
-                            humid : Math.floor(Math.random() * 100),
-                            temp : Math.floor(Math.random() * 100),
-                            lat : Math.random() * 100,
-                            lon : Math.random() * 100,
-                            nodeID : `${j}`,
-                            rain : Math.floor(Math.random() * 2),
-                            timestamp : Date.now(),
-                            isGateway : false
-                        }
-                    )
+                    forest[i][j] = 
+                    {
+                        batStat : "3.5V",
+                        heatIndex : Math.floor(Math.random() * 100),
+                        humid : Math.floor(Math.random() * 100),
+                        temp : Math.floor(Math.random() * 100),
+                        lat : Math.random() * 100,
+                        lon : Math.random() * 100,
+                        nodeID : `${j}`,
+                        rain : Math.floor(Math.random() * 2),
+                        timestamp : Date.now(),
+                        isGateway : false
+                    }
                     if (first){
                         forest[i][j].isGateway = true;
                         first = false;
@@ -79,7 +74,7 @@ export const Dummy = (() => {
                 fn(forest);
             })
         }
-    , 3000)
+    , 5000)
 
 
 

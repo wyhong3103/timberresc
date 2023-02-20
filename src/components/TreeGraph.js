@@ -27,14 +27,14 @@ export const TreeGraph = ({id, setComponent, setViewNode, setNode}) => {
         () => {
             (async () => {
                 const nodes = [];
-                const tree = (await firestoreHandler.getForest())[id];
+                const tree = (firestoreHandler.getForest())[id];
                     
                 let gateway = "";
 
                 for(const i of Object.keys(tree)){
                     if (i === 'forestName') continue;
 
-                    const nodeObj = tree[i][tree[i].length-1];
+                    const nodeObj = tree[i];
                     if (nodeObj.isGateway === true) gateway = nodeObj.nodeID;
                     nodes.push([nodeObj.nodeID, [nodeObj.lat, nodeObj.lon]])
                 }

@@ -25,14 +25,13 @@ export const Forest = ({setComponent, setTree}) => {
             };
 
             for(const j of Object.keys(forest[i])){
-                if (j === "forestName"){
+                if (j === "name"){
                     temp2.forestName = forest[i][j];
                 }else{
-                    const last = forest[i][j].length - 1;
-                    temp2.status[0] += forest[i][j][last].temp;
-                    temp2.status[1] += forest[i][j][last].humid;
-                    temp2.status[2] += forest[i][j][last].heatIndex;
-                    temp2.status[3] += forest[i][j][last].rain;
+                    temp2.status[0] += forest[i][j].temp;
+                    temp2.status[1] += forest[i][j].humid;
+                    temp2.status[2] += forest[i][j].heatIndex;
+                    temp2.status[3] += forest[i][j].rain;
                 }
             }
 
@@ -56,12 +55,11 @@ export const Forest = ({setComponent, setTree}) => {
 
     useEffect(
         () => {
-            (async () => {
-                const forest = await firestoreHandler.getForest();
-                updData(forest);
-            })()
+            firestoreHandler.setRead();
             firestoreHandler.subscribe(updData);
+
             return () => {
+                firestoreHandler.unsetRead();
                 firestoreHandler.unsubscribe(updData);
             }
         }
