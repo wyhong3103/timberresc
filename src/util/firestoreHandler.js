@@ -19,7 +19,7 @@ const firestoreHandler = (() => {
         return forestNodeSnapshot.data().nodes;
     }
 
-    const getForest = async () => {
+    const updForest = async () => {
         const tempForest = {};
 
         const watchlist = await fetchWatchlist();
@@ -49,6 +49,10 @@ const firestoreHandler = (() => {
         forest = tempForest;
     };
 
+    const getForest = () => {
+        return forest;
+    }
+
     const subscribe = (fn) => {
         subscribers.push(fn);
     }
@@ -65,7 +69,7 @@ const firestoreHandler = (() => {
     setInterval(
         () => {
             (async () => {
-                await getForest();
+                await updForest();
                 for(let i = 0; i < subscribers.length; i++){
                     subscribers[i](forest);
                 }
