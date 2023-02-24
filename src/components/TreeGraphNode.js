@@ -10,6 +10,7 @@ export const TreeGraphNode = ({treeID, nodeID, setViewNode}) => {
     const [batStat, setBatStat] = useState(0);
     const [rainStat, setRainStat] = useState(0);
     const [coord, setCoord] = useState([0,0]);
+    const [alert, setAlert] = useState([false, false]);
     const [tempData, setTempData] = useState({
         labels : [],
         datasets : [
@@ -53,6 +54,7 @@ export const TreeGraphNode = ({treeID, nodeID, setViewNode}) => {
     const updData = (forest) => {
         const node = forest[treeID][nodeID];
 
+        const tempAlert = [node.temp >= 30, node.humid <= 25];
         const tempDataT = {...tempData};
         const humidDataT = {...humidData};
         const heatIndexDataT = {...heatIndexData};
@@ -84,6 +86,7 @@ export const TreeGraphNode = ({treeID, nodeID, setViewNode}) => {
         }
 
         setTempData({...tempDataT});
+        setAlert([...tempAlert]);
         setHumidData({...humidDataT});
         setHeatIndexData({...heatIndexDataT});
         setBatStat(node.batStat);
@@ -106,12 +109,16 @@ export const TreeGraphNode = ({treeID, nodeID, setViewNode}) => {
     return(
         <div className='tree-graph-node-comp'>
             <div className='tree-graph-node-container'>
-                <div className="tree-graph-node-chart chart-comp-container">
-                    <h3>Temperature</h3>
+                <div className={`tree-graph-node-chart chart-comp-container ${(alert[0] ? 'tree-graph-node-name-alert' : null)}`}>
+                    <h3>
+                        Temperature{(alert[0] ? ' !!!' : null)}
+                    </h3>
                     <Chart data={tempData}/>
                 </div>
-                <div className="tree-graph-node-chart chart-comp-container">
-                    <h3>Humidity</h3>
+                <div className={`tree-graph-node-chart chart-comp-container ${(alert[1] ? 'tree-graph-node-name-alert' : null)}`}>
+                    <h3>
+                        Humidity{(alert[1] ? ' !!!' : null)}
+                    </h3>
                     <Chart data={humidData}/>
                 </div>
                 <div className="tree-graph-node-chart chart-comp-container">

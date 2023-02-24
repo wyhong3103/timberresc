@@ -9,8 +9,8 @@ export const TreeGraph = ({id, setComponent, setViewNode, setNode}) => {
         nodes : [],
         links : []
     });
-
     const [dimension, setDimension] = useState([0,0]);
+    const [alert, setAlert] = useState({});
 
     const parentContainer = useRef();
 
@@ -26,6 +26,7 @@ export const TreeGraph = ({id, setComponent, setViewNode, setNode}) => {
     useEffect(
         () => {
             (async () => {
+                const tempAlert = {};
                 const nodes = [];
                 const tree = (firestoreHandler.getForest())[id];
                     
@@ -33,9 +34,10 @@ export const TreeGraph = ({id, setComponent, setViewNode, setNode}) => {
 
                 for(const i of Object.keys(tree)){
                     if (i === 'name') continue;
-
+                    
                     const nodeObj = tree[i];
                     if (nodeObj.isGateway === true) gateway = `${nodeObj.nodeID}`;
+                    else tempAlert[i] = (nodeObj.temp >= 33 || nodeObj.humid <= 25);
                     nodes.push([`${nodeObj.nodeID}`, [nodeObj.lat, nodeObj.lon]])
                 }
                 const to = getMST(nodes, gateway);
@@ -71,6 +73,7 @@ export const TreeGraph = ({id, setComponent, setViewNode, setNode}) => {
                     )                
                 }                
 
+                setAlert({...tempAlert});
                 setGraphData({...tempGraphData});
             })();
         }
@@ -105,7 +108,7 @@ export const TreeGraph = ({id, setComponent, setViewNode, setNode}) => {
 
                 nodeColor={
                     (node) => {
-                        return node.name === "Gateway" ? "#171717" : "#3f3f46"
+                        return node.name === "Gateway" ? "#171717" : (alert[node.id] ? "#ef4444" :"#3f3f46")
                     }
                 } 
 

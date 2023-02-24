@@ -5,6 +5,7 @@ import '../styles/Forest.css';
 
 export const Forest = ({setComponent, setTree}) => {
     const [data, setData] = useState([]);
+    const [alert, setAlert] = useState([]);
 
     const monitorTree = (forestID) => {
         setComponent(1);
@@ -12,9 +13,11 @@ export const Forest = ({setComponent, setTree}) => {
     }
 
     const updData = (forest) => {
-        const temp = [];
+        const tempData = [];
+        const tempAlert = []
         for(const i of Object.keys(forest)){
-            const temp2 = {
+            let alertTrack = 0
+            const temp = {
                 forestID : i,
                 forestName : "",
                 status : [
@@ -27,38 +30,36 @@ export const Forest = ({setComponent, setTree}) => {
 
             for(const j of Object.keys(forest[i])){
                 if (j === "name"){
-                    temp2.forestName = forest[i][j];
+                    temp.forestName = forest[i][j];
                 }else if (forest[i][j].isGateway === false){
-                    temp2.status[0] += forest[i][j].temp;
-                    temp2.status[1] += forest[i][j].humid;
-                    temp2.status[2] += forest[i][j].heatIndex;
-                    temp2.status[3] += forest[i][j].rain;
+                    alertTrack |= (forest[i][j].temp >= 33 || forest[i][j].humid <= 25);
+                    temp.status[0] += forest[i][j].temp;
+                    temp.status[1] += forest[i][j].humid;
+                    temp.status[2] += forest[i][j].heatIndex;
+                    temp.status[3] += forest[i][j].rain;
                 }
             }
 
             // Get the average
             for(let j = 0; j < 3; j++){
-                temp2.status[j] /= Object.keys(forest[i]).length-1;
+                temp.status[j] /= Object.keys(forest[i]).length-1;
             } 
 
             // If majority rains, consider it raining
-            temp2.status[3] = (temp2.status[3] >= Math.floor((Object.keys(forest[i]).length-1)/2) ? 1 : 0);
+            temp.status[3] = (temp.status[3] >= Math.floor((Object.keys(forest[i]).length-1)/2) ? 1 : 0);
 
-            temp.push(temp2);
+            tempData.push(temp);
+            tempAlert.push(alertTrack);
         }
-        setData([...temp]);
+        setData([...tempData]);
+        setAlert([...tempAlert]);
     }
-
-    useEffect(
-        () => {
-        }
-    ,[])
 
     useEffect(
         () => {
             firestoreHandler.setRead();
             firestoreHandler.subscribe(updData);
-
+            
             return () => {
                 firestoreHandler.unsetRead();
                 firestoreHandler.unsubscribe(updData);
@@ -84,10 +85,17 @@ export const Forest = ({setComponent, setTree}) => {
 
                     :
 
-                    data.map(item => {
+                    data.map((item, index) => {
                         return(
                             <div key={uniqid()} className="forest-card" onClick={() => monitorTree(item.forestID)}>
-                                <h3 className='forest-card-name'>{item.forestName}</h3>
+                                <h3 className={`forest-card-name ${alert[index] ? 'forest-name-alert' : null}`}>
+                                    {
+                                        alert[index] ? 
+                                        `${item.forestName} !!!`
+                                        :
+                                        item.forestName
+                                    }
+                                </h3>
                                 <div className="forest-card-temp">
                                     <p className='forest-card-prop-title'>Temperature</p>
                                     <p className='forest-card-prop-val'>{item.status[0].toFixed(2)}</p>

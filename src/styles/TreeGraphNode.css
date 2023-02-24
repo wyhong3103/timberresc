@@ -31,6 +31,10 @@
     min-height : 25rem;
 }
 
+.tree-graph-node-name-alert h3{
+    color : #f87171;
+}
+
 .rain-stat-title, .bat-stat-title{
     font-size: 4rem;
     font-family: var(--normal-font);

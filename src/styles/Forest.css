@@ -82,6 +82,10 @@
     font-size: 3rem;
 }
 
+.forest-name-alert{
+    color : #f87171;;
+}
+
 .forest-card-temp{
     grid-column: 1 / 2;
     grid-row : 2 / 4;
