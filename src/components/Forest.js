@@ -98,15 +98,15 @@ export const Forest = ({setComponent, setTree}) => {
                                 </h3>
                                 <div className="forest-card-temp">
                                     <p className='forest-card-prop-title'>Temperature</p>
-                                    <p className='forest-card-prop-val'>{item.status[0].toFixed(2)}</p>
+                                    <p className='forest-card-prop-val'>{`${item.status[0].toFixed(2)} °C`}</p>
                                 </div>
                                 <div className="forest-card-humid">
                                     <p className='forest-card-prop-title'>Humidity</p>
-                                    <p className='forest-card-prop-val'>{item.status[1].toFixed(2)}</p>
+                                    <p className='forest-card-prop-val'>{`${item.status[1].toFixed(2)} %`}</p>
                                 </div>
                                 <div className="forest-card-heat">
                                     <p className='forest-card-prop-title'>Heat Index</p>
-                                    <p className='forest-card-prop-val'>{item.status[2].toFixed(2)}</p>
+                                    <p className='forest-card-prop-val'>{`${item.status[2].toFixed(2)} °C`}</p>
                                 </div>
                                 <p className='forest-card-rain'>Rain Status : {(item.status[3] === 1 ? "Raining" : "Not Raining")}</p>
                             </div>

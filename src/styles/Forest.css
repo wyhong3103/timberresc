@@ -67,6 +67,7 @@
     transition: all 0.3s;
     max-width: 60rem;
     max-height: 30rem;
+    gap : 1rem;
 }
 
 .forest-card:hover{
