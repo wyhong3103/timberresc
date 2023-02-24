@@ -1,3 +1,51 @@
+@media (min-width : 0px){
+    .hero{
+        flex-direction: column;
+    }
+    .hero-left{
+        order : 2;
+    }
+    .hero-right{
+        order : 1;
+    }
+
+    .hero-right{
+        height : 40rem;
+        width : 40rem;
+    }
+
+    .home-sdg-flex{
+        flex-direction: column;
+    }
+
+
+    .home-sensor, .home-gateway, .home-monitor{
+        flex-direction: column;
+    }
+}
+@media (min-width : 1000px){
+    .hero{
+        flex-direction: row;
+    }
+    .hero-left{
+        order : 1;
+    }
+    .hero-right{
+        order : 2;
+    }
+
+    .hero-right{
+        height : 50rem;
+        width : 50rem;
+    }
+    .home-sdg-flex{
+        flex-direction: row;
+    }
+    .home-sensor, .home-gateway, .home-monitor{
+        flex-direction: row;
+    }
+}
+
 .home-page{
     min-height: 100vh;
     display: flex;
@@ -9,11 +57,158 @@
     height : 100%;
     padding : 2rem 15rem 2rem 15rem;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap : 20rem;
+}
+
+.hero{
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.home-main-container h3{
-    font-family: var(--title-font);
-    font-size: 5rem;
+.hero-left{
+    font-family: var(--normal-font);
+    font-size: 2.5rem;
+    color : var(--gray2);
+}
+
+.home-sdg{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap : 5rem;
+    color : var(--gray2);
+    font-family: var(--normal-font);
+}
+
+.home-sdg-flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 90rem;
+    gap : 5rem;
+}
+
+.home-sdg img{
+    height : 30rem;
+}
+
+.home-sdg h3{
+    font-size: 2.5rem;
+}
+
+.home-sdg p{
+    font-size: 1.7rem;
+    text-align: justify;
+}
+
+.home-problem-statement{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap : 5rem;
+    max-width: 80rem;
+    min-width : 20rem;
+    color : var(--gray2);
+    font-family: var(--normal-font);
+}
+
+.home-problem-statement h3{
+    font-size: 2.5rem;
+}
+
+.home-problem-statement p{
+    font-size: 1.7rem;
+    text-align: justify;
+}
+
+.home-explanation{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap : 5rem;
+    max-width: 80rem;
+    color : var(--gray2);
+    font-family: var(--normal-font);
+}
+
+.home-explanation h3{
+    font-size: 2.5rem;
+}
+
+.home-explanation img{
+    height : 30rem;
+}
+
+.home-sensor, .home-gateway, .home-monitor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-explanation-context{
+    display: flex;
+    flex-direction: column;
+    gap : 2rem;
+}
+
+.home-explanation-context h4{
+    font-size: 2rem;
+}
+
+.home-explanation-context p{
+    font-size: 1.5rem;
+    text-align: justify;
+}
+
+.home-lets-timberresc{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap : 5rem;
+    max-width: 80rem;
+    color : var(--gray2);
+    font-family: var(--normal-font);
+}
+
+.home-lets-timberresc h3{
+    font-size: 3.5rem;
+}
+.home-lets-timberresc p{
+    font-size: 2.5rem;
+}
+
+.home-lets-timberresc a{
+    text-decoration: none;
+    font-weight: 600;
+    color : var(--gray2);
+}
+
+.home-lets-timberresc a:hover{
+    text-decoration: underline;
+}
+
+.home-to-dashboard{
+    font-family: var(--normal-font);
+    border : none;
+    background-color: var(--gray2);
+    font-size: 1.7rem;
+    padding : 1rem;
+    color : white;
+    border-radius: 1rem;
+    transition: all 0.3s;
+    white-space: nowrap;
+    margin-bottom: 15rem;
+}
+
+.home-to-dashboard:hover{
+    cursor: pointer;
+    background-color: var(--gray1);
 }
