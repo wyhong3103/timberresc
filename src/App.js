@@ -63,6 +63,10 @@ export const App = () => {
                             />
                         }
                     />
+                    <Route
+                        path="/*"
+                        element={<Home/>}
+                    />
                 </Routes>
             </BrowserRouter>
         </AccountContext.Provider>
