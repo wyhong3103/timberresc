@@ -37,7 +37,7 @@ export const TreeGraph = ({id, setComponent, setViewNode, setNode}) => {
                     
                     const nodeObj = tree[i];
                     if (nodeObj.isGateway === true) gateway = `${nodeObj.nodeID}`;
-                    else tempAlert[i] = (nodeObj.temp >= 33 || nodeObj.humid <= 25);
+                    else tempAlert[i] = (nodeObj.temp >= 35 || nodeObj.humid <= 25);
                     nodes.push([`${nodeObj.nodeID}`, [nodeObj.lat, nodeObj.lon]])
                 }
                 const to = getMST(nodes, gateway);

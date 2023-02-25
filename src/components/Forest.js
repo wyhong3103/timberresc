@@ -32,7 +32,7 @@ export const Forest = ({setComponent, setTree}) => {
                 if (j === "name"){
                     temp.forestName = forest[i][j];
                 }else if (forest[i][j].isGateway === false){
-                    alertTrack |= (forest[i][j].temp >= 33 || forest[i][j].humid <= 25);
+                    alertTrack |= (forest[i][j].temp >= 35 || forest[i][j].humid <= 25);
                     temp.status[0] += forest[i][j].temp;
                     temp.status[1] += forest[i][j].humid;
                     temp.status[2] += forest[i][j].heatIndex;

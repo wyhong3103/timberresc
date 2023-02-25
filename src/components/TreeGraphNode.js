@@ -54,7 +54,7 @@ export const TreeGraphNode = ({treeID, nodeID, setViewNode}) => {
     const updData = (forest) => {
         const node = forest[treeID][nodeID];
 
-        const tempAlert = [node.temp >= 30, node.humid <= 25];
+        const tempAlert = [node.temp >= 35, node.humid <= 25];
         const tempDataT = {...tempData};
         const humidDataT = {...humidData};
         const heatIndexDataT = {...heatIndexData};
@@ -111,18 +111,18 @@ export const TreeGraphNode = ({treeID, nodeID, setViewNode}) => {
             <div className='tree-graph-node-container'>
                 <div className={`tree-graph-node-chart chart-comp-container ${(alert[0] ? 'tree-graph-node-name-alert' : null)}`}>
                     <h3>
-                        Temperature{(alert[0] ? ' !!!' : null)}
+                        Temperature (°C){(alert[0] ? ' !!!' : null)}
                     </h3>
                     <Chart data={tempData}/>
                 </div>
                 <div className={`tree-graph-node-chart chart-comp-container ${(alert[1] ? 'tree-graph-node-name-alert' : null)}`}>
                     <h3>
-                        Humidity{(alert[1] ? ' !!!' : null)}
+                        Humidity (%){(alert[1] ? ' !!!' : null)}
                     </h3>
                     <Chart data={humidData}/>
                 </div>
                 <div className="tree-graph-node-chart chart-comp-container">
-                    <h3>Heat Index</h3>
+                    <h3>Heat Index (°C)</h3>
                     <Chart data={heatIndexData}/>
                 </div>
                 <div className='tree-graph-node-rain'>
