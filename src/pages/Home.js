@@ -25,6 +25,15 @@ export const Home = () => {
                     <img className='hero-right' src={require('../assets/timberresc.png')} alt="timberresc-logo"/>
                 </div>
 
+
+                <div className='home-problem-statement'>
+                    <h3>
+                        Problem Statement
+                    </h3>
+                    <p>
+                        The delayed detection of forest fires poses a significant risk to human lives, property, and ecosystems. Despite the advancements in fire detection technology, the current methods used for early detection of forest fires are often inadequate and unreliable, especially in remote or inaccessible areas. Therefore, there is a critical need to develop a more effective and efficient forest fire detection system that can detect fires promptly and accurately, regardless of the location and time of day. Hence, Vizion present you, <strong>TimberResc</strong>.
+                    </p>
+                </div>
                 <div className='home-sdg'>
                     <h3>
                         Sustainable Development Goals (SDG)
@@ -32,18 +41,9 @@ export const Home = () => {
                     <div className="home-sdg-flex">
                         <img src={require('../assets/sdg13p1.png')} alt="sdg13p1-logo"/>
                         <p>
-                            TimberResc by Vizion aims to contribute to SDG Goal 13.1, which is to strengthen resilience and adaptive capacity to climate related disasters. Forest fire can devastate the forest, leading to loss of biodiversity, increased carbon emission, and other environmental impacts. By preventing it, we can increase the resilience of forest ecosystems to climate-related hazards and natural disasters.
+                            Forest fire can devastate the forest, leading to loss of biodiversity, increased carbon emission, and other environmental impacts. TimberResc by Vizion aims to contribute to SDG Goal 13.1, which is to strengthen resilience and adaptive capacity to climate related disasters by preventing forest fire. With that, we can increase the resilience of forest ecosystems to climate-related hazards and natural disasters.
                         </p>
                     </div>
-                </div>
-
-                <div className='home-problem-statement'>
-                    <h3>
-                        Problem Statement
-                    </h3>
-                    <p>
-                        The delayed detection of forest fires poses a significant risk to human lives, property, and ecosystems. Despite the advancements in fire detection technology, the current methods used for early detection of forest fires are often inadequate and unreliable, especially in remote or inaccessible areas. Therefore, there is a critical need to develop a more effective and efficient forest fire detection system that can detect fires promptly and accurately, regardless of the location and time of day.
-                    </p>
                 </div>
 
                 <div className='home-explanation'>
@@ -90,6 +90,27 @@ export const Home = () => {
                         </div>
                     </div>
                 </div>
+
+                <div className='home-google-tech'>
+                    <h3>
+                        Google Technologies Used
+                    </h3>
+                    <div className='home-google-techs'>
+                        <div className='home-google-techs-card'>
+                            <img src={require('../assets/firebase.png')} alt="firebase-logo"/>
+                            <h4>
+                                Firebase
+                            </h4>
+                        </div>
+                        <div className='home-google-techs-card'>
+                            <img src={require('../assets/googlemap.png')} alt="googlemap-logo"/>
+                            <h4>
+                                Google Map
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+
                 <div className='home-lets-timberresc'>
                     <h3>
                         So, what are you waiting for ?
