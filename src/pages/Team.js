@@ -13,7 +13,7 @@ export const Team = () => {
                 <div className='team-card-container'>
                     <div className='team-member-card'>
                         <img 
-                        src="https://static.vecteezy.com/system/resources/previews/014/554/760/original/man-profile-negative-photo-anonymous-silhouette-human-head-businessman-worker-support-illustration-vector.jpg"
+                        src={require('../assets/tzeyang.png')}
                         alt="member-pfp"
                         className='member-pfp'
                         />
@@ -45,7 +45,7 @@ export const Team = () => {
                     </div>
                     <div className='team-member-card'>
                         <img 
-                        src="https://static.vecteezy.com/system/resources/previews/014/554/760/original/man-profile-negative-photo-anonymous-silhouette-human-head-businessman-worker-support-illustration-vector.jpg"
+                        src={require('../assets/yenhong.png')}
                         alt="member-pfp"
                         className='member-pfp'
                         />
