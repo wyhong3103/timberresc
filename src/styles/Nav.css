@@ -24,7 +24,7 @@
     }
 }
 
-@media (min-width: 500px) {
+@media (min-width: 600px) {
     nav{
         height : 13rem;
         padding : 2rem 15rem 2rem 15rem;

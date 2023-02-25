@@ -1,9 +1,13 @@
 @media (min-width : 0px){
+    .home-main-container{
+        padding : 2rem 5rem 2rem 5rem;
+    }
     .hero{
         flex-direction: column;
     }
     .hero-left{
         order : 2;
+        text-align: center;
     }
     .hero-right{
         order : 1;
@@ -24,11 +28,15 @@
     }
 }
 @media (min-width : 1000px){
+    .home-main-container{
+        padding : 2rem 15rem 2rem 15rem;
+    }
     .hero{
         flex-direction: row;
     }
     .hero-left{
         order : 1;
+        text-align: left;
     }
     .hero-right{
         order : 2;
@@ -55,7 +63,6 @@
 .home-main-container{
     flex-grow: 1;
     height : 100%;
-    padding : 2rem 15rem 2rem 15rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -185,6 +192,8 @@
 .home-google-techs{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     gap : 5rem;
 }
 
