@@ -69,7 +69,6 @@ export const Dummy = (() => {
         () => {
             genForestData();
             for(let i = 0; i < subscribers.length; i++){
-                console.log(forest);
                 subscribers[i](forest);
             }
         }
