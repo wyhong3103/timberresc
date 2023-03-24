@@ -1,6 +1,8 @@
 # TimberResc
 
-<img src="https://github.com/wyhong3103/timberresc/blob/main/src/assets/timberresc.png" width="300">
+<div align="center">
+	<img src="https://github.com/wyhong3103/timberresc/blob/main/src/assets/timberresc.png" width="300">
+</div>
 
 <p align="center">
 	<em>Protect our forests from wildfires with TimberResc.</em>
