@@ -48,15 +48,6 @@
     color : var(--gray2);
 }
 
-.forest-empty{
-    height : 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 3rem;
-    font-family: var(--normal-font);
-}
-
 .forest-card{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
