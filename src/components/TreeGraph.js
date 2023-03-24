@@ -1,10 +1,11 @@
 import '../styles/TreeGraph.css';
 import { getMST } from "../util/MST"
-import firestoreHandler from '../util/firestoreHandler';
 import ForceGraph2D from 'react-force-graph-2d';
 import { useEffect, useRef, useState } from "react"
+import firestoreHandler from '../util/firestoreHandler';
+import Dummy from '../util/Dummy';
 
-export const TreeGraph = ({id, setComponent, setViewNode, setNode}) => {
+export const TreeGraph = ({id, setComponent, setViewNode, setNode, isDemo}) => {
     const [graphData, setGraphData] = useState({
         nodes : [],
         links : []
@@ -28,7 +29,7 @@ export const TreeGraph = ({id, setComponent, setViewNode, setNode}) => {
             (async () => {
                 const tempAlert = {};
                 const nodes = [];
-                const tree = (firestoreHandler.getForest())[id];
+                const tree = (!isDemo ? (firestoreHandler.getForest())[id] : Dummy.getForest()[id]);
                     
                 let gateway = "";
 

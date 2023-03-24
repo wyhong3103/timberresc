@@ -4,8 +4,9 @@ import { Map } from './Map';
 import { useState, useEffect } from 'react';
 import { timestampToTimeString } from "../util/util";
 import firestoreHandler from '../util/firestoreHandler';
+import Dummy from '../util/Dummy';
 
-export const TreeGraphNode = ({treeID, nodeID, setViewNode}) => {
+export const TreeGraphNode = ({treeID, nodeID, setViewNode, isDemo}) => {
 
     const [batStat, setBatStat] = useState(0);
     const [rainStat, setRainStat] = useState(0);
@@ -96,11 +97,18 @@ export const TreeGraphNode = ({treeID, nodeID, setViewNode}) => {
 
     useEffect(
         () => {
-            firestoreHandler.setRead();
-            firestoreHandler.subscribe(updData);
-            return () => {
-                firestoreHandler.unsetRead();
-                 firestoreHandler.unsubscribe(updData);
+            if (!isDemo){
+                firestoreHandler.setRead();
+                firestoreHandler.subscribe(updData);
+                return () => {
+                    firestoreHandler.unsetRead();
+                    firestoreHandler.unsubscribe(updData);
+                }
+            }else{
+                Dummy.subscribe(updData);
+                return () => {
+                    Dummy.unsubscribe();
+                }
             }
         }
     ,[])

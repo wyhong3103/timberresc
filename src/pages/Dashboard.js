@@ -17,6 +17,7 @@ export const Dashboard = () => {
     // 0 = Show forest, 1 = show tree
     const [component, setComponent] = useState(0);
     const [treeID, setTreeID] = useState("");
+    const [isDemo, setDemo] = useState(false);
 
     return(
         loggedIn ?
@@ -26,9 +27,9 @@ export const Dashboard = () => {
             <div className='dashboard-main-container'>
                 {
                     component === 0 ?
-                    <Forest setComponent={setComponent} setTree={setTreeID}/>
+                    <Forest setComponent={setComponent} setTree={setTreeID} setDemo={setDemo}/>
                     :
-                    <Tree treeID={treeID} setComponent={setComponent}/>
+                    <Tree treeID={treeID} setComponent={setComponent} isDemo={isDemo}/>
                 }
             </div>
         </div>
