@@ -52,7 +52,7 @@ export const Nav = () => {
                     :
                     <div className="nav-user">
                         <div className="nav-user-profile">
-                            <img src={context.pfp} alt="user-pfp"/>
+                            <img src={context.pfp} alt="user-pfp" referrerPolicy="no-referrer"/>
                         </div>
                         <button className="nav-logout-btn" onClick={logOut}>
                             Log Out
